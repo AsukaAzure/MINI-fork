@@ -3,13 +3,21 @@ name: Test
 on: 
   push:
     branches: [main]
+    paths: 
+      - "book/**"
 
   pull_request:
     branches: [main]
+    paths:
+      - "book/**"
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: book
 
     steps:
       - uses: actions/checkout@v4
